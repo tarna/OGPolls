@@ -1,0 +1,8 @@
+name: OGPolls
+version: '${version}'
+main: dev.tarna.ogpolls.OGPolls
+loader: dev.tarna.ogpolls.OGPollsLoader
+description: Create and manage polls in your Minecraft server.
+author: Tarna
+website: https://github.com/tarna/OGPolls
+api-version: '1.19'

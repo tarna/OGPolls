@@ -1,0 +1,30 @@
+[versions]
+shadow = "9.0.0-beta11"
+paperweight = "2.0.0-beta.16"
+paper = "1.21.4-R0.1-SNAPSHOT"
+runpaper = "2.3.1"
+cloud = "2.0.0"
+cloud-paper = "2.0.0-beta.10"
+lombok = "1.18.36"
+mongodb = "5.3.0"
+invui = "1.45"
+mcchestuiplus = "1.5.6"
+
+[plugins]
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+paperweight = { id = "io.papermc.paperweight.userdev", version.ref = "paperweight" }
+runpaper = { id = "xyz.jpenilla.run-paper", version.ref = "runpaper" }
+
+[libraries]
+lombok = { module = "org.projectlombok:lombok", name = "lombok", version.ref = "lombok" }
+invui = { module = "xyz.xenondevs.invui:invui", name = "invui", version.ref = "invui" }
+mcchestuiplus = { module = "com.github.DebitCardz:mc-chestui-plus", version.ref = "mcchestuiplus" }
+
+cloud-core = { module = "org.incendo:cloud-core", name = "cloud-core", version.ref = "cloud" }
+cloud-annotations = { module = "org.incendo:cloud-annotations", name = "cloud-annotations", version.ref = "cloud" }
+cloud-paper = { module = "org.incendo:cloud-paper", version.ref = "cloud-paper" }
+
+mongodb = { module = "org.mongodb:mongodb-driver-sync", version.ref = "mongodb" }
+
+[bundles]
+cloud = ["cloud-core", "cloud-annotations", "cloud-paper"]
