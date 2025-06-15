@@ -85,24 +85,27 @@ public class PollManager implements Listener {
 
         String message = ComponentUtils.plainText(event.message());
         if (message.equalsIgnoreCase("cancel") || message.equalsIgnoreCase("stop")) {
-            poll.setActive(true);
-            poll.save();
-            creatingPolls.remove(player.getUniqueId());
-            player.sendRichMessage("<red>Poll creation cancelled.");
+            stopPollCreation(player);
             return;
         }
 
         poll.addOption(message);
 
         if (poll.getOptions().size() >= 6) {
-            poll.setActive(true);
-            poll.save();
-            creatingPolls.remove(player.getUniqueId());
-            player.sendRichMessage("<green>Poll created with " + poll.getOptions().size() + " options.");
+            stopPollCreation(player);
             return;
         }
 
         player.sendRichMessage("<green>Added option: <yellow>" + message);
         player.sendRichMessage("<green>Type another option or <yellow>cancel <green>to stop adding options.");
+    }
+
+    private void stopPollCreation(Player player) {
+        Poll poll = creatingPolls.remove(player.getUniqueId());
+        if (poll != null) {
+            poll.setActive(true);
+            poll.save();
+            player.sendRichMessage("<red>Poll creation stopped. Poll saved with " + poll.getOptions().size() + " options.");
+        }
     }
 }
